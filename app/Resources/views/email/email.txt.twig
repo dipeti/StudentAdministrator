@@ -6,15 +6,14 @@ Dear {{ student.name }},
 It looks like your personal data have been modified. You might want to review the changes here:
 
 Name: {{ student.name }}
-Email: {{ student.name }}
-Place of birth: {{ student.name }}
-Date of birth: {{ student.name }}
-Sex: {{ student.name }}
+Email: {{ student.email }}
+Place of birth: {{ student.placeOfBirth }}
+Date of birth: {{ student.dateOfBirth|date('y-m-d') }}
+Sex: {{ student.sex }}
 
 Study groups:
 {% for group in groups %}
  {{ group.name }}
-
 {% endfor %}
 
 

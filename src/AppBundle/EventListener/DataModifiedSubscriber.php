@@ -2,6 +2,7 @@
 namespace AppBundle\EventListener;
 
 use AppBundle\Entity\Student;
+use AppBundle\Events;
 use AppBundle\Mailer\Mailer;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
@@ -19,7 +20,7 @@ class DataModifiedSubscriber implements \Symfony\Component\EventDispatcher\Event
 
     public static function getSubscribedEvents()
     {
-        return ['data.modified' => 'onDataModified'];
+        return [Events::DATA_MODIFIED => 'onDataModified'];
     }
 
     public function onDataModified(GenericEvent $event)
