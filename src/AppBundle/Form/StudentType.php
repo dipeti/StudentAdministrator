@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Student;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -27,7 +28,17 @@ class StudentType extends AbstractType
                     'male' => 'male',
                     'female' => 'female',
                 ]
-            ]);
+            ])
+            ->add('studyGroups', EntityType::class,[
+            'class' => 'AppBundle\Entity\StudyGroup',
+            'choice_label' => 'name',
+            'expanded' => true,// checkboxes will be rendered
+            'multiple'=> true,
+            'by_reference' => false// by_reference must be set to false if you need the adder and remover to be called.
+
+
+            ])
+        ;
 
     }
 

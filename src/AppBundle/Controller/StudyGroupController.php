@@ -26,6 +26,30 @@ class StudyGroupController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($group);
             $em->flush();
+            $this->addFlash('success','Study group successfully added.');
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('group/add_group.html.twig',[
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     *@Route("group/edit/{id}", name="edit_group")
+     */
+    public function editAction(Request $request, StudyGroup $group)
+    {
+        $group = new StudyGroup();
+        $form = $this->createForm(StudyGroupType::class,$group)
+            ->add('submit', SubmitType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            $this->addFlash('success','Study group successfully edited.');
             return $this->redirectToRoute('index');
         }
 

@@ -16,7 +16,15 @@ class StudentController extends Controller
      */
     public function indexAction()
     {
-        return $this->render(':index:index.html.twig');
+       $em = $this->getDoctrine()->getManager();
+       $groupsRepo = $em->getRepository('AppBundle:StudyGroup');
+       $studentsRepo = $em->getRepository('AppBundle:Student');
+       $students = $studentsRepo->findAll();
+       $groups = $groupsRepo->findAll();
+       return $this->render('index/index.html.twig',[
+           'students' => $students,
+           'groups' => $groups,
+       ]);
     }
 
 
@@ -35,7 +43,30 @@ class StudentController extends Controller
           $em = $this->getDoctrine()->getManager();
           $em->persist($student);
           $em->flush();
+          $this->addFlash('success','Student successfully added.');
           return $this->redirectToRoute('index');
+        }
+
+        return $this->render(':student:add_student.html.twig',[
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("student/edit/{id}", name="edit_student")
+     */
+    public function editAction(Request $request, Student $student)
+    {
+        $form = $this->createForm(StudentType::class, $student)
+            ->add('submit', SubmitType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            $this->addFlash('success','Student successfully edited.');
+            return $this->redirectToRoute('index');
         }
 
         return $this->render(':student:add_student.html.twig',[

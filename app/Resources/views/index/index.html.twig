@@ -1,8 +1,63 @@
 {% extends "base.html.twig" %}
 {% block body %}
-    <div class="jumbotron">
-        <h1>Welcome to the Student page!</h1>
-        <p>To add a new Student click <a href="{{ path('add_student') }}">here.</a></p>
-        <p>To add a new StudentGroup click <a href="{{ path('add_group') }}">here.</a></p>
+    <div class="col-xs-2">
+        <form action="{{ path('add_student') }}">
+            <div class="form-group">
+                <label class="control-label">
+                    Search for Student
+                </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter name" />
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
+        </form>
+        <hr>
+
+        <form action="{{ path('add_student') }}">
+            {% for group in groups %}
+                <div class="checkbox">
+                    <label><input type="checkbox" name="groups[]" value="">{{ group.name }}</label>
+                </div>
+            {% endfor %}
+        </form>
+    </div>
+    <div class="col-xs-10">
+        <div class="row">
+            <i class="fa fa-user-o" aria-hidden="true"></i> {{ students|length }} students
+            <a class="btn btn-primary btn-xs" href="{{ path('add_student') }}"><span class="glyphicon glyphicon-plus-sign"></span> Add new</a>
+            <div class="pull-right">
+                pagination
+            </div>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Sex</th>
+                    <th>Place and Date of Birth</th>
+                    <th>Groups</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for student in students %}
+                    <tr>
+                        <th></th>
+                        <th><a href="{{ path('edit_student', {'id': student.id}) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></th>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.sex }}</td>
+                        <td>{{ student.placeOfBirth }}, {{ student.dateOfBirth|date('Y-m-d') }}</td>
+                        <td>{% for group in student.studyGroups %}
+                                {{ group.name }} {% if not loop.last %}, {% endif %}
+                            {% endfor %}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}
