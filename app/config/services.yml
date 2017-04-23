@@ -4,6 +4,14 @@ parameters:
     #parameter_name: value
 
 services:
+    app.mailer.mailer:
+        class: AppBundle\Mailer\Mailer
+        arguments: ['@swiftmailer.mailer', '@templating', '@router', '%mailer_host%']
+    data_modified_subscriber:
+    	class: AppBundle\EventListener\DataModifiedSubscriber
+    	arguments: ['@app.mailer.mailer']
+    	tags:
+    		- { name: kernel.event_subscriber }
     #service_name:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']

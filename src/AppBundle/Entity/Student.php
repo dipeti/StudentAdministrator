@@ -7,11 +7,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\StudentRepository")
  * @ORM\Table(name="students")
  */
 class Student
 {
+    const NUM_ITEMS = 10;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -47,6 +48,7 @@ class Student
     private $email;
 
     /**
+     * @Assert\Count(max="4", maxMessage="A student cannot take part in more than {{ limit }} study groups.")
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\StudyGroup", inversedBy="students")
      * @ORM\JoinTable(name="students_student_groups")
      */

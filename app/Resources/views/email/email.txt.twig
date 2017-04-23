@@ -1,0 +1,23 @@
+{% block body_text %}
+{% autoescape false %}
+
+Dear {{ student.name }},
+
+It looks like your personal data have been modified. You might want to review the changes here:
+
+Name: {{ student.name }}
+Email: {{ student.name }}
+Place of birth: {{ student.name }}
+Date of birth: {{ student.name }}
+Sex: {{ student.name }}
+
+Study groups:
+{% for group in groups %}
+ {{ group.name }}
+
+{% endfor %}
+
+
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}
