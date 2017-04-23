@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity
@@ -23,6 +25,7 @@ class Student
     private $name;
 
     /**
+     * @Assert\Choice(choices = {"male", "female"})
      * @ORM\Column(type="string")
      */
     private $sex;
@@ -38,6 +41,7 @@ class Student
     private $dateOfBirth;
 
     /**
+     * @Assert\Email()
      * @ORM\Column(type="string")
      */
     private $email;
