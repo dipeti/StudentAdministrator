@@ -4,7 +4,7 @@
     <div class="pull-right">
         {% if students.haveToPaginate %}
             <div class="navigation text-center">
-                {{ pagerfanta(students, 'twitter_bootstrap3',{ routeParams: query,   omitFirstPage: true }) }}
+                {{ pagerfanta(students, 'twitter_bootstrap3',{ omitFirstPage: true }) }}
             </div>
         {% endif %}
     </div>

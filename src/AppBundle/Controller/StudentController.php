@@ -2,11 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\AppBundle;
 use AppBundle\Entity\Student;
 use AppBundle\Events;
 use AppBundle\Form\StudentType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\GenericEvent;
@@ -32,7 +30,6 @@ class StudentController extends Controller
             return $this->render('index/index.html.twig',[
                 'students' => $students,
                 'groups' => $groups,
-                'query' => ['name' => $nameFilter]
             ]);
         }
         elseif ($request->query->has('groups'))
