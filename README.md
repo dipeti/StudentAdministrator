@@ -1,69 +1,34 @@
-Symfony Standard Edition
+The New-Western high school decided to implement a new, cloud-based administration software. The admission office would like to collect and store the most important data of the students in this new product. Additionally, they need to keep records of the study groups students are enrolled for.  
+ 
+We would like to store these details of all students:
+
+ * name 
+ * sex 
+ * place of birth 
+ * date of birth 
+ * email address 
+ * study groups (maximum of 4 faculty per student) 
+ 
+Properties of a study group:
+
+ * name of the group
+ * leader of the group (as string) 
+ * subject (as string)
+ * date and time of study group 
+ * enrolled students 
+  
+Create an administration system, where the school can store all the mentioned data about student and study groups. During working on this, please pay attention to the following: 
+ 
+ * John from the admission office asked for a paged, filterable list of students. (10 students per page as default, can search for student’s name, and select study groups with checkboxes) Plus, we need to show which study group a student enrolled for. 
+ * Martha, his assistant has to do the following actions with students: 
+ 	+ Add new student 
+ 	+ Edit an existing student 
+ 	+ Delete a student (we need to delete all enrollments of the student also) 
+ 	+ Add a student to a study group. (Please pay attention to the school policy, which states that a student could attend the maximum of four study groups at a time.) 
+ 	+ Remove a student from a study group 
+ 	+ Every student has to be notified via email about every action with his/her profile. For example if a student is added to a group he/she has to receive and email about it. 
+ * The guys in the office would like take a look on the software before it’s ready, so you do not have to create registration / loginw. 
+
+Symfony Standard Edition 
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
-
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
-
-What's inside?
---------------
-
-The Symfony Standard Edition is configured with the following defaults:
-
-  * An AppBundle you can use to start coding;
-
-  * Twig as the only configured template engine;
-
-  * Doctrine ORM/DBAL;
-
-  * Swiftmailer;
-
-  * Annotations enabled for everything.
-
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.2/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.2/doctrine.html
-[8]:  https://symfony.com/doc/3.2/templating.html
-[9]:  https://symfony.com/doc/3.2/security.html
-[10]: https://symfony.com/doc/3.2/email.html
-[11]: https://symfony.com/doc/3.2/logging.html
-[12]: https://symfony.com/doc/3.2/assetic/asset_management.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
