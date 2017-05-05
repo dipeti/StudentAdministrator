@@ -27,7 +27,7 @@ class StudentController extends Controller
         {
             $nameFilter = $request->query->get('name');
             $students = $studentsRepo->findByName($nameFilter,$page);
-            return $this->render('index/index.html.twig',[
+            return $this->render('index/table.html.twig',[
                 'students' => $students,
                 'groups' => $groups,
             ]);
